@@ -30,10 +30,12 @@ const convert = () => {
 
 const setMode = (mode, shouldConvert = false) => {
 	if (mode === 'hiragana') {
+		inputField.placeholder = 'こんにちは'
 		hiraganaBtn.classList.add('active')
 		katakanaBtn.classList.remove('active')
 	}
 	if (mode === 'katakana') {
+		inputField.placeholder = 'コンピューター'
 		hiraganaBtn.classList.remove('active')
 		katakanaBtn.classList.add('active')
 	}

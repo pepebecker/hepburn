@@ -1,4 +1,58 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+const hepburn = require('hepburn')
+
+const inputField = document.querySelector('.inputField')
+const hiraganaBtn = document.querySelector('.btn.hiragana')
+const katakanaBtn = document.querySelector('.btn.katakana')
+const output = document.querySelector('.output')
+
+const convert = () => {
+	const text = inputField.value
+	if (text.length > 0) {
+		if (hepburn.containsKana(text)) {
+			if (hepburn.containsHiragana(text)) {
+				setMode('hiragana')
+			} else {
+				setMode('katakana')
+			}
+			output.innerText = hepburn.fromKana(text)
+		} else {
+			if (hiraganaBtn.classList.contains('active')) {
+				output.innerText = hepburn.toHiragana(text)
+			}
+			if (katakanaBtn.classList.contains('active')) {
+				output.innerText = hepburn.toKatakana(text)
+			}
+		}	
+	} else {
+		output.innerText = ''
+	}
+}
+
+const setMode = (mode, shouldConvert = false) => {
+	if (mode === 'hiragana') {
+		inputField.placeholder = 'こんにちは'
+		hiraganaBtn.classList.add('active')
+		katakanaBtn.classList.remove('active')
+	}
+	if (mode === 'katakana') {
+		inputField.placeholder = 'コンピューター'
+		hiraganaBtn.classList.remove('active')
+		katakanaBtn.classList.add('active')
+	}
+	if (shouldConvert) {
+		convert()
+	}
+}
+
+hiraganaBtn.addEventListener('click', () => setMode('hiragana', true))
+katakanaBtn.addEventListener('click', () => setMode('katakana', true))
+
+inputField.addEventListener('input', convert)
+
+convert()
+
+},{"hepburn":3}],2:[function(require,module,exports){
 module.exports = function(str, regex, map) {
     if (arguments.length === 2) {
         map = regex;
@@ -14,7 +68,7 @@ module.exports = function(str, regex, map) {
     });
 };
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /*jslint node: true */
 'use strict';
 
@@ -290,56 +344,4 @@ exports.containsKana = function(str){
   return (exports.containsHiragana(str) || exports.containsKatakana(str));
 };
 
-},{"bulk-replace":1}],3:[function(require,module,exports){
-const hepburn = require('hepburn')
-
-const inputField = document.querySelector('.inputField')
-const hiraganaBtn = document.querySelector('.btn.hiragana')
-const katakanaBtn = document.querySelector('.btn.katakana')
-const output = document.querySelector('.output')
-
-const convert = () => {
-	const text = inputField.value
-	if (text.length > 0) {
-		if (hepburn.containsKana(text)) {
-			if (hepburn.containsHiragana(text)) {
-				setMode('hiragana')
-			} else {
-				setMode('katakana')
-			}
-			output.innerText = hepburn.fromKana(text)
-		} else {
-			if (hiraganaBtn.classList.contains('active')) {
-				output.innerText = hepburn.toHiragana(text)
-			}
-			if (katakanaBtn.classList.contains('active')) {
-				output.innerText = hepburn.toKatakana(text)
-			}
-		}	
-	} else {
-		output.innerText = ''
-	}
-}
-
-const setMode = (mode, shouldConvert = false) => {
-	if (mode === 'hiragana') {
-		hiraganaBtn.classList.add('active')
-		katakanaBtn.classList.remove('active')
-	}
-	if (mode === 'katakana') {
-		hiraganaBtn.classList.remove('active')
-		katakanaBtn.classList.add('active')
-	}
-	if (shouldConvert) {
-		convert()
-	}
-}
-
-hiraganaBtn.addEventListener('click', () => setMode('hiragana', true))
-katakanaBtn.addEventListener('click', () => setMode('katakana', true))
-
-inputField.addEventListener('input', convert)
-
-convert()
-
-},{"hepburn":2}]},{},[3]);
+},{"bulk-replace":2}]},{},[1]);
