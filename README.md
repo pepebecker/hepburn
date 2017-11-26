@@ -1,15 +1,15 @@
-# Hepburn Webinterface
+# Hepburn Transliteration
 
 [![MIT-licensed](https://img.shields.io/github/license/pepebecker/hepburn.svg)](https://opensource.org/licenses/MIT)
 [![chat on gitter](https://badges.gitter.im/pepebecker.svg)](https://gitter.im/pepebecker)
 
-Japanese conversion tool to convert between Hiragana, Katakana and Romaji.
+Tool to transliterate between Hiragana, Katakana and Romaji.
 
 ### [`http://hepburn.pepebecker.com`](http://hepburn.pepebecker.com)
 
 ## Related
 
-- [`pinyin`](https://github.com/pepebecker/pinyin)
+- [`mandarin`](https://github.com/pepebecker/mandarin)
 - [`pinyin-utils`](https://github.com/pepebecker/pinyin-utils)
 - [`pinyin-split`](https://github.com/pepebecker/pinyin-split)
 - [`find-hanzi`](https://github.com/pepebecker/find-hanzi)
