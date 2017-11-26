@@ -1,0 +1,25 @@
+{
+  "name": "hepburn",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/pepebecker/hepburn#readme",
+  "bugs": {
+    "url": "https://github.com/pepebecker/hepburn/issues"
+  },
+  "license": "MIT",
+  "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pepebecker/hepburn.git"
+  },
+  "scripts": {
+    "build": "browserify index.js -o bundle.js",
+    "watch": "watchify index.js -o bundle.js"
+  },
+  "dependencies": {
+    "browserify": "^14.5.0",
+    "hepburn": "^1.0.0",
+    "watchify": "^3.9.0"
+  }
+}
